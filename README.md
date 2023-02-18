@@ -212,3 +212,36 @@ apfsutil <device>
 ```
 This is a new tool that just displays some information from a container. For now, it lists the volumes a container
 contains, and snapshots if there are some. This tool might be extended in the future.
+
+
+
+TODO:
+
+sudo apt-get update -y
+sudo apt-get install -y libfuse-dev
+sudo apt install -y git
+
+git clone https://github.com/sgan81/apfs-fuse.git
+cd apfs-fuse
+git submodule init
+git submodule update
+
+mkdir build
+cd build
+sudo apt install -y cmake
+cmake ..
+sed -i.bak ‘s/USE_FUSE3:BOOL=ON/USE_FUSE3:BOOL=OFF/’ CMakeCache.txt
+sudo apt-get install -y libz-dev
+sudo apt-get install -y libbz2-dev
+make
+
+sudo cp apfs-* /usr/local/bin
+
+sudo mkdir -p /media/MacHD
+sudo ./apfs-fuse -o allow_other /dev/sda2 /media/MacHD
+
+#–Add the ability to mount an exFat USB to copy the data to (Natively compatible with Windows & Mac)
+
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install exfat-fuse exfat-utils
