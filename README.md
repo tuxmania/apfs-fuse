@@ -217,6 +217,7 @@ contains, and snapshots if there are some. This tool might be extended in the fu
 
 TODO:
 
+```
 sudo apt-get update -y
 sudo apt-get install -y libfuse-dev
 sudo apt install -y git
@@ -230,7 +231,7 @@ mkdir build
 cd build
 sudo apt install -y cmake
 cmake ..
-sed -i.bak ‘s/USE_FUSE3:BOOL=ON/USE_FUSE3:BOOL=OFF/’ CMakeCache.txt
+sed -i.bak 's/USE_FUSE3:BOOL=ON/USE_FUSE3:BOOL=OFF/' CMakeCache.txt
 sudo apt-get install -y libz-dev
 sudo apt-get install -y libbz2-dev
 make
@@ -245,3 +246,4 @@ sudo ./apfs-fuse -o allow_other /dev/sda2 /media/MacHD
 sudo add-apt-repository universe
 sudo apt update
 sudo apt install exfat-fuse exfat-utils
+```
